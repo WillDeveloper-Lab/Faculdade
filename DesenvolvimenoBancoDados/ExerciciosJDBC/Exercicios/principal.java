@@ -1,22 +1,21 @@
+package Exercicios;
+
 import java.sql.*;
 import java.util.Scanner;
+
+import com.mysql.jdbc.PreparedStatement;
 
 public class principal {
 
 	static final String Driver_JDBC = "com.mysql.jdbc.Driver";
-	static final String URL = "jdbc:mysql://localhost:3306/clinica";
+	static final String URL = "jdbc:mysql://localhost:3306/lojajdbcjava";
 	static final String User = "root";
 	static final String Pass = "root";
-	static final String QuerySelect = "SELECT * FROM produto";
-	public static String insert(String nome,double valor, int quantidade){
-		System.out.println("insert into produto(nome, valor, quatidade) values (" + nome +'","+ valor+","+quantidade+"")");
-				return QueryInstert;
-
-	}
-	final String QueryInsert = "Insert into produto(descricao,valor,quantidade) values (";
-
+	static final String QuerySelect = "select * from produto;";
+	
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
+		
 
 		try {
 			Class.forName(Driver_JDBC);
@@ -35,26 +34,28 @@ public class principal {
 						System.out.println(rs.getInt("quantidade"));
 						System.out.println(rs.getDouble("valor") * rs.getInt("quantidade"));
 					}
+					rs.close();
 					opcao = 0;
-				}if(opcao == 2){
+				}if(opcao == 2){					
 					System.out.println("Digite o Nome do Produto: ");
 					String nome = teclado.next();
 					System.out.println("Digite o Valor do Produto: ");
 					double valor = teclado.nextDouble();
 					System.out.println("Digite a Quantidade do Produto: ");
 					int quantidade = teclado.nextInt();
+					int resp = stmt.executeUpdate("insert into produto(nome, valor, quatidade) values ("+nome+","+valor+","+quantidade+");");
+					if (resp > 0 ){
+					  System.out.println("Médico cadastrado com sucesso!");
+					}  
 					opcao = 0;
 				}
+				//o programa fecha logo após digitar as informações
 			}
-		}
-			//ResultSet rs = stmt.executeQuery();
-
-			rs.close();
 			con.close();
-
-		} catch (Exception e) {
+			stmt.close();
+		}
+			catch (Exception e) {
 			System.out.println("FALHA na Conexão!!!");
-
 		}
 	}
 }
