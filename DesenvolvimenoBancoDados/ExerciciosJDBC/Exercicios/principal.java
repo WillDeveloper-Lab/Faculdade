@@ -1,10 +1,8 @@
 package Exercicios;
 
-import java.sql.*;
 import java.util.Scanner;
 
-import com.mysql.jdbc.PreparedStatement;
-
+import java.sql.*;
 public class principal {
 
 	static final String Driver_JDBC = "com.mysql.jdbc.Driver";
@@ -53,8 +51,7 @@ public class principal {
 			}
 			con.close();
 			stmt.close();
-		}
-			catch (Exception e) {
+		}catch (Exception e) {
 			System.out.println("FALHA na Conexão!!!");
 		}
 	}
