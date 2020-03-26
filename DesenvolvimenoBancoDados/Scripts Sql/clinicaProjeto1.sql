@@ -115,3 +115,22 @@ INSERT into consultas (codm,codp,`data`,hora) VALUES (3,3,STR_TO_DATE('12/06/200
 INSERT into consultas (codm,codp,`data`,hora) VALUES (3,4,STR_TO_DATE('19/06/2006','%d/%m/%Y'),STR_TO_DATE('13:00','%H:%i')); 
 INSERT into consultas (codm,codp,`data`,hora) VALUES (4,4,STR_TO_DATE('20/06/2006','%d/%m/%Y'),STR_TO_DATE('13:00','%H:%i')); 
 INSERT into consultas (codm,codp,`data`,hora) VALUES (4,4,STR_TO_DATE('22/06/2006','%d/%m/%Y'),STR_TO_DATE('19:30','%H:%i'));
+
+---Exercicios 
+
+--1)
+UPDATE `pacientes` SET `cidade` = 'ilhota' WHERE `nome` = 'Paulo';
+--2)
+update consultas set consultas.data = '2006-07-04', hora = '12:00:00' where codm = 1 and codp = 4;
+--3)
+update pacientes set doenca = 'cancer' where codp=1;
+--4)
+update consultas set hora = '14:30:00' where codm = 3 and codp = 4;
+--5)
+delete from funcionarios where codf = 4;
+--6)
+delete from consultas where hora > '19:00:00';
+--7)
+delete from pacientes where idade<10 or doenca = 'cancer'
+--8)
+delete from medicos where cidade ='Biguacu' or cidade ='Palhoca';
